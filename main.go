@@ -85,6 +85,6 @@ func main() {
 	in += "\n"
 
 	// Renders the output
-	out, _ := glamour.Render(in, "dark")
+	out, _ := glamour.Render(in, detectTheme())
 	fmt.Print(out)
 }

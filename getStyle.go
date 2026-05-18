@@ -7,6 +7,9 @@ import (
 	"charm.land/glamour/v2/ansi"
 )
 
+// Old script that attempted to handle accent color detection via gsettings and change the style
+// Might continue it later
+
 const defaultMargin uint = 2
 
 func stringPtr(s string) *string { return &s }
