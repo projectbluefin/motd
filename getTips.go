@@ -39,7 +39,7 @@ func getRandomTip(preset ...string) string {
 				l.Get("Bazzite uses ZSTD compression in BTRFS by default, and deduplicates files across your entire drive. **More space for your games!**"),
 				l.Get("*Have a large library of ROMs to manage?* ROM Properties Page shell extension is installed by default and makes it much easier, with thumbnails and additional info for all of your files"),
 				l.Get("The `bazzite-rollback-helper` command can guide you for rolling back or rebasing to older Bazzite builds"),
-				l.Get("ProtonPlus can be used to install and update custom versions of Proton. We recommend Proton-GE for problematic Steam games."),
+				l.Get("ProtonPlus can be used to install and update custom versions of Proton. We recommend Proton-GE for problematic Steam games and Wine-GE for all other use cases outside of Steam."),
 			}...)
 		case "bluefin":
 			tips = append(tips, []string{
@@ -55,7 +55,7 @@ func getRandomTip(preset ...string) string {
 				l.Get("KDE powers your desktop! Donate to [KDE](%s)", "https://kde.org/donate"),
 				l.Get("*Want to control your device from your phone?* The KDE Connect app functions with all images ~ [More info](%s)", "https://kdeconnect.kde.org/"),
 				l.Get("*Want to customize and theme your desktop?* Tweak your desktop by following our guide ~ [More info](%s)", "https://docs.bazzite.gg/General/Desktop_Environment_Tweaks/"),
-				l.Get("*Need more control over your Flatpaks permissions?* Check out the \"App permissions\" settings under the \"Security and privacy\" panel in the system settings"),
+				l.Get("*Need more control over your Flatpak apps permissions?* Check out the \"App permissions\" settings under the \"Security and privacy\" panel in the system settings"),
 			}...)
 		case "gnome":
 			tips = append(tips, []string{
@@ -64,8 +64,7 @@ func getRandomTip(preset ...string) string {
 				l.Get("*Looking for some nostalgia?* Enable `Compiz windows effect` from the Extension Manager."),
 				l.Get("*Missing the top left hot corner?* Apply pressure to the bottom edge of your screen with your mouse. You can also re-enable the hot corner from settings if desired."),
 				l.Get("Manage desktop extensions with *Extension Manager*."),
-				l.Get("ProtonPlus can be used to install and update custom versions of Proton. We recommend Proton-GE for problematic Steam games and Wine-GE for all other use cases outside of Steam."),
-				l.Get("*Need more control over your Flatpaks permissions?* Check out [Flatseal](%s) to manage them.", "appstream://com.github.tchx84.Flatseal"),
+				l.Get("*Need more control over your Flatpak apps permissions?* Check out [Flatseal](%s) to manage them.", "appstream://com.github.tchx84.Flatseal"),
 			}...)
 		case "dev":
 			tips = append(tips, []string{
@@ -86,7 +85,7 @@ func getRandomTip(preset ...string) string {
 		case "deck":
 			tips = append(tips, []string{
 				l.Get("*Want to install Decky Loader?* There's a `ujust` command for that! `ujust setup-decky install`"),
-				l.Get("The updater built into 󰓓 Steam game mode has been modified to update Bazzite, Flatpaks, and Distrobox containers. *Just ignore the changelog.*"),
+				l.Get("The updater built into 󰓓 Steam game mode has been modified to update Bazzite, Flatpak apps, and Distrobox containers. *Just ignore the changelog.*"),
 				l.Get("*Install a game with Lutris?* Right click on it and `Create steam shortcut` to easily play it in 󰓓 Steam game mode."),
 				l.Get("*Games missing icons?* The `SteamGridDB` plugin for Decky Loader makes it easy to add missing art ~ [More info](%s)", "https://github.com/SteamGridDB/decky-steamgriddb"),
 				l.Get("*Confused about what games are compatible with Linux?* The `ProtonDB Badges` plugin for Decky Loader adds community-powered game compatibility badges to your entire 󰓓 Steam Library ~ [More info](%s)", "https://github.com/OMGDuke/protondb-decky"),
@@ -110,7 +109,7 @@ func getRandomTip(preset ...string) string {
 				l.Get("**H.264 hardware acceleration is supported out of the box.** No tweaks necessary!"),
 				l.Get("*No Flatpak or distro packaging available?* The Gear Lever app is included to make managing and integrating AppImages easy! ~ [Install it here](%s)", "appstream://it.mijorus.gearlever"),
 				l.Get("Tailscale is included, check out [their docs](%s)", "https://tailscale.com/kb/1017/install"),
-				l.Get("*Need to manage your Flatpaks repositories and data?* Check out [Warehouse](%s) to manage them", "appstream://io.github.flattool.Warehouse"),
+				l.Get("*Need to manage your Flatpak repositories and data?* Check out [Warehouse](%s) to manage them", "appstream://io.github.flattool.Warehouse"),
 				l.Get("Open a folder with Clapgrep for super powerful search ~ [Install it here](%s)", "appstream://de.leopoldluley.Clapgrep"),
 			}...)
 		default:
