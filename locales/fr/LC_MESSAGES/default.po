@@ -2,7 +2,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"PO-Revision-Date: 2026-05-18 22:02+0200\n"
+"PO-Revision-Date: 2026-05-30 01:54+0200\n"
 "Last-Translator: Mimolet <themimolet@proton.me>\n"
 "Language-Team: French <>\n"
 "Language: fr\n"
@@ -197,13 +197,13 @@ msgid ""
 "across your entire drive. **More space for your games!**"
 msgstr ""
 
-#: main.go:74
+#: main.go:76
 msgid "Bluesky"
 msgstr "Bluesky"
 
-#: main.go:30
-msgid "Boot Status: Healthy 󰄳"
-msgstr "État de démarrage: Sain 󰄳"
+#: main.go:31
+msgid "Boot Status"
+msgstr "État de démarrage"
 
 #: getTips.go:51 getTips.go:72
 msgid ""
@@ -213,7 +213,7 @@ msgstr ""
 "La commande `ujust bbrew` permet d'afficher nos sélection d'applis de "
 "développement et de ligne de commande"
 
-#: main.go:38
+#: main.go:41
 msgid "Command"
 msgstr "Commandes"
 
@@ -225,7 +225,7 @@ msgstr ""
 "Le développement par conteneur n'est pas lié à votre système - vos "
 "devcontainers marchent sur Linux, macOS et Windows"
 
-#: main.go:38
+#: main.go:41
 msgid "Description"
 msgstr "Description"
 
@@ -235,15 +235,15 @@ msgid ""
 "for isolated, reproducible environments ! [Get started here](%s)"
 msgstr ""
 
-#: main.go:72
+#: main.go:74
 msgid "Discord"
 msgstr "Discord"
 
-#: main.go:76
+#: main.go:78
 msgid "Discuss"
 msgstr "Discussions"
 
-#: main.go:70
+#: main.go:72
 msgid "Documentation"
 msgstr "Documentation"
 
@@ -251,15 +251,19 @@ msgstr "Documentation"
 msgid "Don't forget to check the [release notes](%s)"
 msgstr ""
 
-#: main.go:52
+#: main.go:55
 msgid "Enable terminal bling"
-msgstr ""
+msgstr "Active le bling du terminal"
 
 #: getTips.go:61
 msgid "GNOME makes your desktop! Donate to [GNOME](%s)"
 msgstr ""
 "Votre bureau a été créé par la fondation GNOME ! N'hésitez pas à leur [faire "
 "un don](%s)"
+
+#: main.go:33
+msgid "Healthy"
+msgstr "Sain"
 
 #: getTips.go:25
 msgid "Help keep Aurora alive and healthy, consider [donating](%s)"
@@ -305,11 +309,11 @@ msgstr "Vous aimez les dinosaures? `ujust toggle-dinosaurs`"
 msgid "Like servers? Check out [ucore](%s)"
 msgstr "Aimez-vous les serveurs ? Alors [ucore](%s) est fait pour vous!"
 
-#: main.go:44
+#: main.go:47
 msgid "List all available commands"
 msgstr "Liste toutes les commandes disponibles"
 
-#: main.go:50
+#: main.go:53
 msgid "Manage command line packages"
 msgstr "Gère les paquets de ligne de commande"
 
@@ -317,7 +321,7 @@ msgstr "Gère les paquets de ligne de commande"
 msgid "Manage desktop extensions with *Extension Manager*."
 msgstr "Gérez vos extensions Gnome avec *Extension Manager*."
 
-#: main.go:78
+#: main.go:80
 msgid "Mastodon"
 msgstr "Mastodon"
 
@@ -372,7 +376,7 @@ msgstr ""
 msgid "Really love our wallpapers? Donate to [Chandeleer](%s)"
 msgstr ""
 
-#: main.go:68
+#: main.go:70
 msgid "Report an issue"
 msgstr "Signaler un problème"
 
@@ -406,7 +410,7 @@ msgstr ""
 "aussi mettre à jour Bazzite, vos applications et les conteneurs distrobox. "
 "*Ne prêtez pas attention aux notes de mise à jour.*"
 
-#: main.go:46
+#: main.go:49
 msgid "Toggle this banner on/off"
 msgstr "Active/désactive ce panneau"
 
@@ -450,7 +454,7 @@ msgstr ""
 "VSCode est installé avec l'extension `devcontainers` pré-installé - parfait "
 "pour le développement conteneurisé"
 
-#: main.go:48
+#: main.go:51
 msgid "View system information"
 msgstr "Affiche les informations système"
 
@@ -505,3 +509,7 @@ msgstr ""
 "La commande `ujust rebase-helper` peut vous aidez à basculer sur une version "
 "antérieure de votre système en cas de soucis - il y a plus d'informations à "
 "ce sujet dans la documentation"
+
+#: main.go:26
+msgid "unknown system"
+msgstr "Système inconnu"
