@@ -7,11 +7,11 @@ import (
 )
 
 type Config struct {
-	Commands    []Command `json:"commands"`
-	InfoFile    string    `json:"info_file"`
-	Links       []Link    `json:"links"`
-	StyleFile   string    `json:"style_file"`
-	TipsPresets []string  `json:"tips_presets"`
+	Commands       []Command `json:"commands"`
+	InfoFile       string    `json:"info_file"`
+	Links          []Link    `json:"links"`
+	UseAccentColor bool      `json:"use_accent_color"`
+	TipsPresets    []string  `json:"tips_presets"`
 }
 
 type Command struct {
@@ -39,7 +39,7 @@ func defaultConfig() Config {
 			{Name: "mastodon", URL: "https://fosstodon.org/@UniversalBlue"},
 		},
 		TipsPresets: []string{
-			"ublue", "dev",
+			"ublue",
 		},
 	}
 }

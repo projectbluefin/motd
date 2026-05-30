@@ -19,7 +19,7 @@ func main() {
 	cfg := getConfig()
 
 	// Gets the image info and OS name
-	in := "# " + l.Get("Welcome to %s", getOSName()) + "\n"
+	in := "# " + l.Get("Welcome to %s !", getOSName()) + "\n"
 	if imageInfo := getImageInfo(cfg.InfoFile); imageInfo.ImageRef != "" || imageInfo.ImageTag != "" {
 		in += " 󱋩 `" + imageInfo.ImageRef + ":" + imageInfo.ImageTag + "` \n"
 	} else if isBootcSystem() {
@@ -28,11 +28,11 @@ func main() {
 
 	// Gets the Greenboot status
 	if greenboot := getGreenbootInfo(); greenboot != "" {
-		in += "\n 󰟀  " + l.Get("Boot Status") + ": "
+		in += "\n 󰟀  " + l.Get("Boot Status") + ":"
 		if greenboot == "healthy" {
-			in += l.Get("Healthy") + " 󰄳"
+			in += "`" + l.Get("Healthy") + " 󰄳`"
 		} else {
-			in += greenboot
+			in += "`" + greenboot + "`"
 		}
 		in += " \n"
 	}
@@ -86,7 +86,18 @@ func main() {
 	in += linkSb.String()
 	in += "\n"
 
+	var out string
+
+	colorScheme := detectTheme()
+	if cfg.UseAccentColor {
+		r, _ := glamour.NewTermRenderer(
+			glamour.WithStyles(getAccentStyle()),
+		)
+		out, _ = r.Render(in)
+	} else {
+		out, _ = glamour.Render(in, colorScheme)
+	}
+
 	// Renders the output
-	out, _ := glamour.Render(in, detectTheme())
 	fmt.Print(out)
 }
