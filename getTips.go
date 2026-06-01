@@ -66,7 +66,7 @@ func getRandomTip(preset ...string) string {
 		case "gnome":
 			tips = append(tips, []string{
 				l.Get("GNOME makes your desktop! Donate to [GNOME](%s)", "https://donate.gnome.org"),
-				l.Get("*Want to control your device from your phone?* The GSConnect extension works with your KDE Connect app ! [More info](%s)", "https://github.com/GSConnect/gnome-shell-extension-gsconnect/wiki"),
+				l.Get("*Want to control your device from your phone?* Look for the GSConnect extension in the [Extension Manager](%s)", "appstream://com.mattjakeman.ExtensionManager"),
 				l.Get("*Looking for some nostalgia?* Look for `Compiz windows effect` in the [Extension Manager](%s)", "appstream://com.mattjakeman.ExtensionManager"),
 				l.Get("*Missing the top left hot corner?* Apply pressure to the bottom edge of your screen with your mouse. You can also re-enable the hot corner from settings if desired."),
 				l.Get("Manage desktop extensions with [Extension Manager](%s)", "appstream://com.mattjakeman.ExtensionManager"),
@@ -113,8 +113,12 @@ func getRandomTip(preset ...string) string {
 				l.Get("%s separates the OS from your development environment - embrace the cloud-native workflow !", getOSName()),
 				l.Get("Develop with devcontainers - use `devcontainer.json` files in your projects for isolated, reproducible environments ! [Get started here](%s)", "https://code.visualstudio.com/docs/devcontainers/tutorial"),
 			}...)
-		default:
-			// no-op
+		case "default":
+			tips = append(tips, []string{
+				l.Get("The Linux penguin is named `Tux` !"),
+				l.Get("The real %s are the friends we make along the way", getOSName()),
+				l.Get("Your distro is valid ! It's your computer, you have the power to choose the distro that fits your needs :D"),
+			}...)
 		}
 	}
 

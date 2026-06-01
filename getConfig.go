@@ -41,7 +41,7 @@ func defaultConfig() Config {
 		},
 		Symbol: "!",
 		TipsPresets: []string{
-			"ublue",
+			"default",
 		},
 	}
 }
