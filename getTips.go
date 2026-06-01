@@ -34,7 +34,7 @@ func getRandomTip(customTips []string, preset ...string) string {
 				l.Get("**Love Bazzite?** Help keep it going by [donating](%s)", "https://docs.bazzite.gg/donations/"),
 				l.Get("**Did an update break something?** You can roll back, pin the previous release, or rebase to an older build — [view the guide](%s)", "https://docs.bazzite.gg/Installing_and_Managing_Software/Updates_Rollbacks_and_Rebasing/rolling_back_system_updates/"),
 				l.Get("**Care about game preservation?** Support the Stop Killing Games initiative — [Find out more](%s)", "https://www.stopkillinggames.com/"),
-				l.Get("**Prefer Distrobox over rpm-ostree for installing packages?** — It's safer and easier to manage. `ujust distrobox` gets you started! — [More info](%s)", "https://docs.bazzite.gg/Installing_and_Managing_Software/Distrobox/"),
+				l.Get("**Prefer Distrobox over rpm-ostree for installing packages** — It's safer and easier to manage. `ujust distrobox` gets you started! — [More info](%s)", "https://docs.bazzite.gg/Installing_and_Managing_Software/Distrobox/"),
 				l.Get("**Installing a Windows game that isn't on Steam?** Lutris is pre-installed and recommended for better handling of Wine prefixes — [View gaming guide](%s)", "https://docs.bazzite.gg/Gaming/"),
 				l.Get("Bazzite uses BTRFS for internal and external drives (including MicroSD). Note: **NTFS and exFAT are not supported.**"),
 				l.Get("**Looking to set up Waydroid?** — [View our documentation](%s)", "https://docs.bazzite.gg/Installing_and_Managing_Software/Waydroid_Setup_Guide/"),
@@ -124,7 +124,7 @@ func getRandomTip(customTips []string, preset ...string) string {
 		case "default":
 			tips = append(tips, []string{
 				l.Get("The Linux penguin is named `Tux`!"),
-				l.Get("**The real %s** are the friends we make along the way", getOSName()),
+				l.Get("Maybe **the real %s** was the friends we made along the way", getOSName()),
 				l.Get("**Your distro is valid!** It's your computer, choose what works best for you. :D"),
 			}...)
 		}

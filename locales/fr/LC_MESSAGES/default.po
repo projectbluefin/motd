@@ -2,7 +2,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"PO-Revision-Date: 2026-06-02 01:06+0200\n"
+"PO-Revision-Date: 2026-06-02 01:51+0200\n"
 "Last-Translator: Mimolet <themimolet@proton.me>\n"
 "Language-Team: French <>\n"
 "Language: fr\n"
@@ -66,8 +66,8 @@ msgid ""
 msgstr ""
 "**Confus par la compatibilité de vos jeux avec Linux ?** Le plugin Decky "
 "Loader pour les badges `ProtonDB` rajoute des badges de compatibilité gérés "
-"par la communauté pour toute votre bibliothèque 󰓓 Steam — [En savoir plus](%s"
-")"
+"par la communauté pour toute votre bibliothèque 󰓓 Steam — [En savoir plus]"
+"(%s)"
 
 #: getTips.go:116
 msgid ""
@@ -167,12 +167,9 @@ msgid ""
 "be controlled from 󰓓 Steam game mode by the `Tailscale Control` and "
 "`TunnelDeck` Decky loader plugins."
 msgstr ""
-"**Looking for more security?** Tailscale and OpenVPN are built-in, and can "
-"be controlled from 󰓓 Steam game mode by the `Tailscale Control` and "
-"`TunnelDeck` Decky loader plugins. **Recherchez-vous plus de sécurité ?** "
-"Tailscale et OpenVPN sont intégrés et peuvent être contrôlé depuis le 󰓓 "
-"Steam game mode grâce aux plugins Decky Loader `Tailscale Control` et "
-"`TunnelDeck`."
+"**Recherchez-vous plus de sécurité ?** Tailscale et OpenVPN sont intégrés et "
+"peuvent être contrôlé depuis le 󰓓 Steam game mode grâce aux plugins Decky "
+"Loader `Tailscale Control` et `TunnelDeck`."
 
 #: getTips.go:40
 msgid "**Looking to set up Waydroid?** — [View our documentation](%s)"
@@ -198,10 +195,9 @@ msgid ""
 "**Managing a large ROM library?** The ROM Properties Page shell extension "
 "comes pre-installed, adding **thumbnails and metadata** to all your files."
 msgstr ""
-"**Avez-vous une grande bibliothèque de ROMs ?** Allez voir la page**Gérer "
-"une grande bibliothèque ROM ?** L'extension du shell de la page de "
-"propriétés ROM est préinstallé et ajoute des **vignettes et métadonnées** à "
-"tous vos fichiers."
+"**Avez-vous une grande bibliothèque de ROMs ?** La page de propriétés ROM "
+"est préinstallée et rajoute des **vignettes et métadonnées** à tous vos "
+"fichiers. "
 
 #: getTips.go:79
 msgid ""
@@ -209,8 +205,8 @@ msgid ""
 "windows effect` extension in the [Extension Manager](%s)"
 msgstr ""
 "**Les fenêtres bancales du début des années 2000 vous manquent ?** "
-"Recherchez l'extension `Compiz windows effect` dans le [Gestionnaire d'extensi"
-"ons](%s)"
+"Recherchez l'extension `Compiz windows effect` dans le [Gestionnaire "
+"d'extensions](%s)"
 
 #: getTips.go:73
 msgid ""
@@ -226,8 +222,8 @@ msgid ""
 "**Need more control over your Flatpak apps permissions?** [Check out "
 "Flatseal](%s)"
 msgstr ""
-"**Besoin de plus de contrôle sur vos applis Flatpaks?** [Allez voir Flatseal]("
-"%s)"
+"**Besoin de plus de contrôle sur vos applis Flatpaks?** [Allez voir Flatseal]"
+"(%s)"
 
 #: getTips.go:26
 msgid ""
@@ -271,13 +267,12 @@ msgstr ""
 
 #: getTips.go:37
 msgid ""
-"**Prefer Distrobox over rpm-ostree for installing packages?** — It's safer "
+"**Prefer Distrobox over rpm-ostree for installing packages** — It's safer "
 "and easier to manage. `ujust distrobox` gets you started! — [More info](%s)"
 msgstr ""
-"**Il est recommandé de privilégier Distrobox à rpm-ostree pour installer des p"
-"aquets?** — "
-"C'est plus sûr et plus simple à entretenir. La commande `ujust distrobox` est "
-"là pour bien démarrer! — [En savoir plus](%s)"
+"**Il est recommandé de privilégier Distrobox à rpm-ostree pour installer des "
+"paquets** — C'est plus sûr et plus simple à entretenir. La commande `ujust "
+"distrobox` est là pour bien démarrer! — [En savoir plus](%s)"
 
 #: getTips.go:101
 msgid ""
@@ -293,19 +288,14 @@ msgstr ""
 "**Tailscale est inclus dans votre système**, n'hésitez pas à jeter un coup "
 "d'œil à [leur documentation](%s)"
 
-#: getTips.go:127
-msgid "**The real %s** are the friends we make along the way"
-msgstr "**Le vrai %s** sont les amis qu'on se fait en chemin"
-
 #: getTips.go:69
 msgid ""
 "**Using a handheld that doesn't have enough buttons?** 󰓓 Steam game mode now "
 "supports touch gestures to slide out the menus, thanks to [ChimeraOS](%s)"
 msgstr ""
-"**Utilisez-vous un Steam Deck qui n'a pas assez de boutons?** 󰓓 Steam game mo"
-"de "
-"prend en charge les gestes tactiles pour faire glisser les menus, grâce à [Chi"
-"meraOS](%s)"
+"**Utilisez-vous un Steam Deck qui n'a pas assez de boutons?** 󰓓 Steam game "
+"mode prend en charge les gestes tactiles pour faire glisser les menus, grâce "
+"à [ChimeraOS](%s)"
 
 #: getTips.go:88
 msgid ""
@@ -314,24 +304,23 @@ msgid ""
 msgstr ""
 "Pour avoir plus de contrôles sur les autorisations de vos applis Flatpak, "
 "vous avez un page dédiée dans la section `Sécurité & Confidentialité → "
-"Permissions des applications** dans la configuration du système"
+"Permissions des applications` dans la configuration du système"
 
 #: getTips.go:78
 msgid ""
 "**Want to control your device from your phone?** Look for the `GSConnect` "
 "extension in the [Extension Manager](%s)"
 msgstr ""
-"**Vous souhaitez lier votre appareil avec votre téléphone ?** "
-"Recherchez l'extension `GSConnect` dans le [Gestionnaire d'extensions](%s)"
+"**Vous souhaitez lier votre appareil avec votre téléphone ?** Recherchez "
+"l'extension `GSConnect` dans le [Gestionnaire d'extensions](%s)"
 
 #: getTips.go:87
 msgid ""
 "**Want to control your device from your phone?** Then the KDE Connect app is "
 "made for you — [More info](%s)"
 msgstr ""
-"**Vous souhaitez lier votre appareil avec votre téléphone ?** Alors l'applicat"
-"ion KDE Connect est "
-"faite pour vous — [En savoir plus](%s)"
+"**Vous souhaitez lier votre appareil avec votre téléphone ?** Alors "
+"l'application KDE Connect est faite pour vous — [En savoir plus](%s)"
 
 #: getTips.go:45
 msgid ""
@@ -378,7 +367,7 @@ msgid ""
 "Bazzite uses ZSTD-compressed BTRFS with automatic deduplication -> **meaning "
 "more storage space for your games.**"
 msgstr ""
-"Bazzite utilise  un BTRFS compressé avec ZSTD et avec déduplication "
+"Bazzite utilise un BTRFS compressé avec ZSTD et avec déduplication "
 "automatique -> **ce qui veut dire plus d'espace de stockage pour vos jeux.**"
 
 #: main.go:87
@@ -399,7 +388,7 @@ msgstr ""
 
 #: main.go:42
 msgid "Command"
-msgstr "Commandes"
+msgstr "Commande"
 
 #: main.go:42
 msgid "Description"
@@ -451,7 +440,7 @@ msgstr "Gère les paquets de ligne de commande"
 
 #: getTips.go:80
 msgid "Manage desktop extensions with [Extension Manager](%s)"
-msgstr "Gérez vos extensions avec [Extension Manager](%s)"
+msgstr "Gérez vos extensions avec le [Gestionnaire d'extensions](%s)"
 
 #: main.go:58
 msgid "Manually update the system"
@@ -464,6 +453,11 @@ msgstr "Mastodon"
 #: main.go:85
 msgid "Matrix"
 msgstr "Matrix"
+
+#: getTips.go:127
+msgid "Maybe **the real %s** was the friends we made along the way"
+msgstr ""
+"Peut-être que **le vrai %s** était les amis qu'on s'est faits en chemin"
 
 #: getTips.go:50
 msgid ""
@@ -539,9 +533,9 @@ msgid ""
 "The `bazzite-rollback-helper` command can guide you for rolling back or "
 "rebasing to older Bazzite builds — [More info](%s)"
 msgstr ""
-"La commande `bazzite-rollback-helper` peut vous guider pour revenir en arrière"
-" ou "
-"basculer vers des versions plus anciennes de Bazzite — [En savoir plus](%s)"
+"La commande `bazzite-rollback-helper` peut vous guider pour revenir en "
+"arrière ou basculer vers des versions plus anciennes de Bazzite — [En savoir "
+"plus](%s)"
 
 #: getTips.go:28
 msgid "The wallpapers are made by **Chandeleer** — [Support their work](%s)"
@@ -603,7 +597,7 @@ msgid ""
 "`ujust --choose` will show you each ujust shortcut and the script they're "
 "running."
 msgstr ""
-"La commande `ujust --choose` affiche chaque commande  `ujust` et les scripts "
+"La commande `ujust --choose` affiche chaque commande `ujust` et les scripts "
 "qu'ils utilisent."
 
 #: getTips.go:115
@@ -635,7 +629,7 @@ msgid ""
 "󰓓 The Steam game mode updater also updates Bazzite, Flatpak apps, and "
 "Distrobox containers. The changelog shown is from the Steam client."
 msgstr ""
-"󰓓 Le programme de mise à jour du Steam  game mode met également à jour "
+"󰓓 Le programme de mise à jour du Steam game mode met également à jour "
 "Bazzite, vos applications et vos conteneurs Distrobox. Les notes de mise à "
 "jour affichées proviennent du client Steam."
 
