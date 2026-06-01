@@ -10,7 +10,7 @@
     },
     {
       "cmd": "ujust bluefin-cli",
-      "desc": "terminal_bling"
+      "desc": "term_bling"
     },
     {
       "cmd": "brew help",

@@ -79,3 +79,9 @@ func getDesktop() string {
 	}
 	return desktop
 }
+
+// hasNerdFontSymbols checks if the Nerd Fonts symbols are available to prevent broken symbols in the MOTD - WIP
+func hasNerdFontSymbols() bool {
+	_, err := os.Stat("/usr/share/fonts/nerd-fonts/NerdFontsSymbolsOnly/")
+	return err == nil
+}

@@ -2,7 +2,7 @@
 
 *Umotd is a translatable and configurable MOTD made for your favorite Linux systems!*
 
-**WIP** : The translations are not yet complete and some features still need testing.
+**WIP** : Some features still need testing.
 
 **Contributions are welcome!** If you want to contribute, you're welcome to submit a pull request or open an issue - it's very much appreciated ❤️
 
@@ -11,6 +11,7 @@
 Here are features that are planned for the future:
 
 - Args to enable / disable the MOTD itself
+- Auto-detect or config option to prevent broken symbols
 - Shows a warning if the installed system image is over a certain amount of time (e.g. one month - configurable)
 - Shows a warning if the installed system image is unverified (could be disabled via configuration)
 

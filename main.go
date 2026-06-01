@@ -82,13 +82,13 @@ func main() {
 			case "discord":
 				link.Name = "󰙯 [" + l.Get("Discord") + "]"
 			case "matrix":
-				link.Name = "󰣇 [" + l.Get("Matrix") + "]"
+				link.Name = "󰊌 [" + l.Get("Matrix") + "]"
 			case "bluesky":
 				link.Name = " [" + l.Get("Bluesky") + "]"
 			case "mastodon":
 				link.Name = "󰫑 [" + l.Get("Mastodon") + "]"
 			case "donate":
-				link.Name = "󰌹 [" + l.Get("Donate") + "]"
+				link.Name = "󱢏 [" + l.Get("Donate") + "]"
 			default:
 				link.Name = "󰌹 [" + link.Name + "]"
 			}
