@@ -216,7 +216,7 @@ msgid ""
 "across your entire drive. **More space for your games!**"
 msgstr ""
 
-#: main.go:76
+#: main.go:79
 msgid "Bluesky"
 msgstr "Bluesky"
 
@@ -232,7 +232,7 @@ msgstr ""
 "La commande `ujust bbrew` permet d'afficher nos sélection d'applis de "
 "développement et de ligne de commande"
 
-#: main.go:41
+#: main.go:42
 msgid "Command"
 msgstr "Commandes"
 
@@ -244,7 +244,7 @@ msgstr ""
 "Le développement par conteneur n'est pas lié à votre système - vos "
 "devcontainers marchent sur Linux, macOS et Windows"
 
-#: main.go:41
+#: main.go:42
 msgid "Description"
 msgstr "Description"
 
@@ -254,15 +254,15 @@ msgid ""
 "for isolated, reproducible environments ! [Get started here](%s)"
 msgstr ""
 
-#: main.go:74
+#: main.go:77
 msgid "Discord"
 msgstr "Discord"
 
-#: main.go:78
+#: main.go:81
 msgid "Discuss"
 msgstr "Discussions"
 
-#: main.go:72
+#: main.go:75
 msgid "Documentation"
 msgstr "Documentation"
 
@@ -270,7 +270,7 @@ msgstr "Documentation"
 msgid "Don't forget to check the [release notes](%s)"
 msgstr ""
 
-#: main.go:55
+#: main.go:56
 msgid "Enable terminal bling"
 msgstr "Active le bling du terminal"
 
@@ -328,11 +328,11 @@ msgstr "Vous aimez les dinosaures? `ujust toggle-dinosaurs`"
 msgid "Like servers? Check out [ucore](%s)"
 msgstr "Aimez-vous les serveurs ? Alors [ucore](%s) est fait pour vous!"
 
-#: main.go:47
+#: main.go:48
 msgid "List all available commands"
 msgstr "Liste toutes les commandes disponibles"
 
-#: main.go:53
+#: main.go:54
 msgid "Manage command line packages"
 msgstr "Gère les paquets de ligne de commande"
 
@@ -340,7 +340,7 @@ msgstr "Gère les paquets de ligne de commande"
 msgid "Manage desktop extensions with *Extension Manager*."
 msgstr "Gérez vos extensions Gnome avec *Extension Manager*."
 
-#: main.go:80
+#: main.go:83
 msgid "Mastodon"
 msgstr "Mastodon"
 
@@ -391,7 +391,7 @@ msgstr ""
 "Vous adorez nous fonds d'écran ? Faites un don à notre artiste [Chandeleer]"
 "(%s)"
 
-#: main.go:70
+#: main.go:73
 msgid "Report an issue"
 msgstr "Signaler un problème"
 
@@ -427,7 +427,7 @@ msgstr ""
 "aussi mettre à jour Bazzite, vos applications et les conteneurs distrobox. "
 "*Ne prêtez pas attention aux notes de mise à jour.*"
 
-#: main.go:49
+#: main.go:50
 msgid "Toggle this banner on/off"
 msgstr "Active/désactive ce panneau"
 
@@ -475,12 +475,13 @@ msgstr ""
 "VSCode est installé avec l'extension `devcontainers` pré-installé - parfait "
 "pour le développement conteneurisé"
 
-#: main.go:51
+#: main.go:52
 msgid "View system information"
 msgstr "Affiche les informations système"
 
 #: main.go:22
-msgid "Welcome to %s !"
+#, fuzzy
+msgid "Welcome to %s"
 msgstr "Bienvenue sur %s !"
 
 #: getTips.go:100
