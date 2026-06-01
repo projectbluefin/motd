@@ -72,7 +72,10 @@ func isBootcSystem() bool {
 	return err == nil
 }
 
-// func getDesktop() string {
-// 	cmd := exec.Command("")
-// 	return
-// }
+func getDesktop() string {
+	desktop := os.Getenv("XDG_CURRENT_DESKTOP")
+	if desktop == "" {
+		return "Unknown desktop"
+	}
+	return desktop
+}
