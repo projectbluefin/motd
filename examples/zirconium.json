@@ -18,7 +18,7 @@
     },
     {
       "cmd": "sudo bootc update",
-      "desc": "Manually update the system"
+      "desc": "man_upd"
     }
   ],
   "symbol": "!"

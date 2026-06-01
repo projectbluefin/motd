@@ -1,28 +1,36 @@
 # Umotd
 
-Umotd is a translatable and configurable MOTD - made for your favorite Bootc system !
+*Umotd is a translatable and configurable MOTD made for your favorite Linux systems!*
 
-It's written in **Go** and uses the `gotext` and `glamour` libraries.
+**WIP** : The translations are not yet complete and some features still need testing.
 
-**WIP** : The translations are not yet complete and some features still need testing. 
+**Contributions are welcome!** If you want to contribute, you're welcome to submit a pull request or open an issue - it's very much appreciated ❤️
 
-If you want to contribute, you're welcome to submit a pull request or open an issue - it's very much appreciated.
-
-## What's next
+## Roadmap
 
 Here are features that are planned for the future:
 
-- Shows a warning if the installed image is over a certain amount of time (e.g. one month - configurable)
-- Shows a warning if the installed image is unverified (could be disabled via configuration)
+- Args to enable / disable the MOTD itself
+- Shows a warning if the installed system image is over a certain amount of time (e.g. one month - configurable)
+- Shows a warning if the installed system image is unverified (could be disabled via configuration)
 
-> Both are already done in Bazzite, so it's only a matter of porting them over to Umotd.
-
-- Custom configurable tips
+> Both are already done in Bazzite, so it's only a matter of porting them over to umotd.
 
 ## How to try
 
-To try Umotd, first clone the repository and build the binary (you'll need the latest version of Go installed):
+### Install it with Homebrew
 
+> WIP
+
+### Install it from Github
+
+> WIP
+
+### Compile from source
+
+You'll need to have [`go`](https://repology.org/project/go/versions) installed on your system to compile Umotd from source.
+
+Then you'll have to simply clone the repository and then build the binary:
 ```
 git clone https://github.com/theMimolet/umotd
 cd umotd
@@ -30,51 +38,85 @@ go build
 ./umotd
 ```
 
-> You can also just drop the `umotd` binary into your usual `/bin` folder and it will work from anywhere.
+You'll then have the `umotd` binary in the current directory, which you can just drop into your usual `/bin` folder and it will work without any further setup (except for the configuration file if you want to customize it).
 
 ## How to translate
 
-To translate Umotd, you'll need to have `go`, `gettext` and `xgotext` 
+### Prerequisites
 
-You can get them all using the following commands: 
-- `go`: `brew install go`
-- `gettext`: `brew install gettext` (actually might be preinstalled)
-- `xgotext`: `go install github.com/leonelquinteros/gotext/cli/xgotext@latest`
+To translate and test Umotd, you'll need to have the following tools installed on your system:
 
-Then you can simply run the translators.sh script to extract and update the translations.
+- [`go`](https://repology.org/project/go/versions)
+- [`gettext`](https://repology.org/project/gettext/versions)
+- [`xgotext`](https://pkg.go.dev/github.com/leonelquinteros/gotext/cli/xgotext) - `go install github.com/leonelquinteros/gotext/cli/xgotext@latest`
+
+### Usage
+
+You can simply run the translators.sh script to extract the translatable strings and update the translations files.
+
 ```
 ./translators.sh <language code>
 ```
 
-If your language already exists, it will be updated automatically. If not, a new language file will be created for you at `locales/<language code>/LC_MESSAGES/default.po`.
+Your translation files are located in the `locales/<language code>/LC_MESSAGES/default.po` directory.
 
-Use your favorite po editor to translate the strings in the `.po` file. 
-You can then use `LANGUAGE=<language code>` in front of the `./umotd` or `go run .` command to test your translation.
+> If your language already exists, it will be updated automatically. If not, a new language file will be created for you.
 
+Finally, use your favorite po editor to translate the strings in the `.po` file - like [Poedit](appstream://net.poedit.poedit), [Gtranslator](appstream://org.gnome.Gtranslator) or [Lokalize](appstream://org.kde.lokalize).
+
+### Testing your translation
+
+You can then use `LANGUAGE=<language code>` in front of the usual command to test your translation, like this:
+
+```sh
+# Run with the compiled binary - needs to be rebuilt after translation changes
+LANGUAGE=fr ./umotd
+```
+
+```sh
+# Run with the source code - not compiled, so no need to rebuild after translation changes
+LANGUAGE=fr go run .
+```
 
 ## How to configure
 
-Umotd has default built-in configs, but you may be more interested in having a custom config file.
+Umotd has a default built-in look, but it's actually made to be highly customizable.
+If you're managing a custom system, it might interest you.
 
-You can create a custom config file at `/etc/umotd/config.json` or `~/.config/umotd/config.json`.
+### Where to put your config
 
-Note : There are built-in presets for tips, commands descriptions and links labels - those are used to get translated strings.
+You can create a custom config file at `/etc/umotd/config.json` (system-wide) or `~/.config/umotd/config.json` (user-specific).
 
-Here's an example config file with all the currently available options (there's the example folder if you want to see concrete use cases):
+### Translations ?!
+
+Umotd supports translations for specific tips, command descriptions and link names.
+They have specific names / codes that are used to get translated strings.
+
+Any other option not listed won't be translated.
+
+### Decomposing the config file
+
+Here's a breakdown of the config file options - there's also the example folder if you want to see concrete use cases.
+
+#### "Commands"
+
+This option allows you to define a list of commands to display in the MOTD.
+
+Here are the unique codes you can use to get translated strings for command descriptions : 
+
+- `cmd_list`: "List of available commands"
+- `cli_pkg`: "Manage command line packages"
+- `term_bling`: "Enable terminal bling"
+- `motd_toggle`: "Toggle this banner on/off" (there are no built-in commands for this)
+- `sys_info`: "View system info"
+- `man_upd`: "Manually update the system"
+
 ```json
 {
   "commands": [
     {
-      "cmd": "ujust --choose",
-      "desc": "cmd_list"
-    },
-    {
-      "cmd": "ujust toggle-user-motd",
-      "desc": "motd_toggle"
-    },
-    {
       "cmd": "ujust aurora-cli",
-      "desc": "terminal_bling"
+      "desc": "term_bling"
     },
     {
       "cmd": "fastfetch",
@@ -86,10 +128,30 @@ Here's an example config file with all the currently available options (there's 
     },
     {
       "cmd": "cowsay",
-      "desc": "Custom command field (won't be translated)"
+      "desc": "Display a cow saying something"
     }
-  ],
-  "info-file": "/usr/share/ublue-os/image-info.json",
+  ]
+}
+```
+
+#### Links
+
+This option allows to add custom links to the MOTD.
+
+There are unique names you can use to get a translated name for the link :
+
+- `website` : "Website"
+- `issues` : "Report an issue"
+- `docs` : "Documentation"
+- `discuss` : "Discuss"
+- `discord` : "Discord"
+- `matrix` : "Matrix"
+- `bluesky` : "Bluesky"
+- `mastodon` : "Mastodon"
+- `donate` : "Donate"
+
+```json
+{
   "links": [
     {
       "name": "issues",
@@ -112,12 +174,77 @@ Here's an example config file with all the currently available options (there's 
       "url": "https://github.com/ublue-os/aurora/discussions"
     },
     {
-      "name": "Custom Link (won't be translated)",
+      "name": "Custom Link (it won't get translated)",
       "url": "https://www.innersloth.com/games/among-us/"
     }
+  ]
+}
+```
+
+#### Symbol
+
+This option allows to customize the symbol used in the MOTD.
+
+It's a string (generally a single character) that will be used to suffix the welcome message of the MOTD.
+
+```json
+{
+  "symbol": "!"
+}
+```
+
+#### Tips
+
+The `tips` option allows to add custom tips to the MOTD.
+But if you want to use the predefined and translated tips included in umotd, you can use the `tips-presets` option.
+
+Currently, there are the following presets available:
+
+- `aurora`
+- `bazzite`
+- `bluefin`
+- `deck`
+- `gnome`
+- `kde`
+- `ublue`
+- `ublue-dev`
+
+```json
+{
+  "tips": [
+    "This is a custom tip by yours truly ! :D",
+    "This is another custom tip (they won't get translated)"
   ],
-  "symbol": "!",
-  "tips-presets": ["aurora", "dev", "kde", "ublue"],
+  "tips-presets": [
+    "gnome",
+    "bluefin",
+    "ublue",
+    "ublue-dev"
+  ]
+}
+```
+
+#### Use Accent Color
+
+This option allows umotd to use the accent color of the system.
+
+> Note: It's only available for the GNOME desktop as it relies on `gsettings`.
+
+```json
+{
   "use-accent-color": true
+}
+```
+
+#### Info File
+
+This option allows to redirect the info file path to a custom location.
+
+> Note: This option is specifically tailored for bootc / ublue images, because it uses the image info file of their system to display information about the system image the user is currently running.
+
+
+```json
+{
+  "info-file": "/usr/share/ublue-os/image-info.json"
 }
 ```

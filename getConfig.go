@@ -11,6 +11,7 @@ type Config struct {
 	InfoFile       string    `json:"info-file"`
 	Links          []Link    `json:"links"`
 	Symbol         string    `json:"symbol"`
+	Tips           []string  `json:"tips"`
 	TipsPresets    []string  `json:"tips-presets"`
 	UseAccentColor bool      `json:"use-accent-color"`
 }

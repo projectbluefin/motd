@@ -46,41 +46,49 @@ func main() {
 			switch cmd.Desc {
 			case "cmd_list":
 				cmd.Desc = l.Get("List all available commands")
+			case "cli_pkg":
+				cmd.Desc = l.Get("Manage command line packages")
+			case "term_bling":
+				cmd.Desc = l.Get("Enable terminal bling")
 			case "motd_toggle":
 				cmd.Desc = l.Get("Toggle this banner on/off")
 			case "sys_info":
 				cmd.Desc = l.Get("View system information")
-			case "cli_pkg":
-				cmd.Desc = l.Get("Manage command line packages")
-			case "terminal_bling":
-				cmd.Desc = l.Get("Enable terminal bling")
+			case "man_upd":
+				cmd.Desc = l.Get("Manually update the system")
 			}
-			fmt.Fprintf(&cmdSb, "| `%s`  | %s |\n", cmd.Cmd, cmd.Desc)
+			fmt.Fprintf(&cmdSb, "| `%s` | %s |\n", cmd.Cmd, cmd.Desc)
 		}
 		in += cmdSb.String()
 		in += "\n"
 	}
 
 	// Gets a random tip
-	in += getRandomTip(cfg.TipsPresets...) + "\n\n"
+	in += getRandomTip(cfg.Tips, cfg.TipsPresets...) + "\n\n"
 
 	// Gets the links
 	if len(cfg.Links) > 0 {
 		var linkSb strings.Builder
 		for _, link := range cfg.Links {
 			switch link.Name {
+			case "website":
+				link.Name = "󰌹 [" + l.Get("Website") + "]"
 			case "issues":
 				link.Name = "󰊤 [" + l.Get("Report an issue") + "]"
 			case "docs":
 				link.Name = "󰈙 [" + l.Get("Documentation") + "]"
-			case "discord":
-				link.Name = "󰙯 [" + l.Get("Discord") + "]"
-			case "bluesky":
-				link.Name = " [" + l.Get("Bluesky") + "]"
 			case "discuss":
 				link.Name = "󰊌 [" + l.Get("Discuss") + "]"
+			case "discord":
+				link.Name = "󰙯 [" + l.Get("Discord") + "]"
+			case "matrix":
+				link.Name = "󰣇 [" + l.Get("Matrix") + "]"
+			case "bluesky":
+				link.Name = " [" + l.Get("Bluesky") + "]"
 			case "mastodon":
 				link.Name = "󰫑 [" + l.Get("Mastodon") + "]"
+			case "donate":
+				link.Name = "󰌹 [" + l.Get("Donate") + "]"
 			default:
 				link.Name = "󰌹 [" + link.Name + "]"
 			}
@@ -93,7 +101,7 @@ func main() {
 	var out string
 
 	colorScheme := detectTheme()
-	if cfg.UseAccentColor {
+	if cfg.UseAccentColor && getDesktop() == "GNOME" {
 		r, _ := glamour.NewTermRenderer(
 			glamour.WithStyles(getAccentStyle()),
 		)
