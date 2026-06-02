@@ -2,7 +2,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"PO-Revision-Date: 2026-06-02 01:51+0200\n"
+"PO-Revision-Date: 2026-06-02 12:57+0200\n"
 "Last-Translator: Mimolet <themimolet@proton.me>\n"
 "Language-Team: French <>\n"
 "Language: fr\n"
@@ -370,11 +370,11 @@ msgstr ""
 "Bazzite utilise un BTRFS compressé avec ZSTD et avec déduplication "
 "automatique -> **ce qui veut dire plus d'espace de stockage pour vos jeux.**"
 
-#: main.go:87
+#: main.go:141
 msgid "Bluesky"
 msgstr "Bluesky"
 
-#: main.go:31
+#: main.go:85
 msgid "Boot Status"
 msgstr "État de démarrage"
 
@@ -386,23 +386,23 @@ msgstr ""
 "La commande `ujust bbrew` permet d'afficher une sélection d'IDEs, d'applis "
 "de développement et de ligne de commande."
 
-#: main.go:42
+#: main.go:96
 msgid "Command"
 msgstr "Commande"
 
-#: main.go:42
+#: main.go:96
 msgid "Description"
 msgstr "Description"
 
-#: main.go:83
+#: main.go:137
 msgid "Discord"
 msgstr "Discord"
 
-#: main.go:81
+#: main.go:135
 msgid "Discuss"
 msgstr "Discussions"
 
-#: main.go:79
+#: main.go:133
 msgid "Documentation"
 msgstr "Documentation"
 
@@ -410,15 +410,23 @@ msgstr "Documentation"
 msgid "Don't forget to check the [release notes](%s)"
 msgstr "N'oubliez pas de consulter les [notes de version](%s)"
 
-#: main.go:91
+#: main.go:145
 msgid "Donate"
 msgstr "Faire un don"
 
-#: main.go:52
+#: main.go:106
 msgid "Enable terminal bling"
 msgstr "Active le bling du terminal"
 
-#: main.go:33
+#: main.go:55
+msgid "Failed to disable the motd."
+msgstr "Échec de la désactivation du motd."
+
+#: main.go:37
+msgid "Failed to enable the motd."
+msgstr "Échec de l'activation du motd."
+
+#: main.go:87
 msgid "Healthy"
 msgstr "Sain"
 
@@ -430,11 +438,15 @@ msgstr ""
 "Installez `tealdeer` avec Homebrew pour avoir un aperçu de base de vos "
 "outils."
 
-#: main.go:48
+#: main.go:62
+msgid "Invalid command"
+msgstr "Commande invalide"
+
+#: main.go:102
 msgid "List all available commands"
 msgstr "Liste toutes les commandes disponibles"
 
-#: main.go:50
+#: main.go:104
 msgid "Manage command line packages"
 msgstr "Gère les paquets de ligne de commande"
 
@@ -442,15 +454,15 @@ msgstr "Gère les paquets de ligne de commande"
 msgid "Manage desktop extensions with [Extension Manager](%s)"
 msgstr "Gérez vos extensions avec le [Gestionnaire d'extensions](%s)"
 
-#: main.go:58
+#: main.go:112
 msgid "Manually update the system"
 msgstr "Met à jour le système manuellement"
 
-#: main.go:89
+#: main.go:143
 msgid "Mastodon"
 msgstr "Mastodon"
 
-#: main.go:85
+#: main.go:139
 msgid "Matrix"
 msgstr "Matrix"
 
@@ -493,7 +505,7 @@ msgstr ""
 "custom de Proton. Nous recommandons Proton-GE pour les jeux Steam "
 "problématiques et Wine-GE pour les autres jeux non-Steam."
 
-#: main.go:77
+#: main.go:131
 msgid "Report an issue"
 msgstr "Signaler un problème"
 
@@ -537,17 +549,33 @@ msgstr ""
 "arrière ou basculer vers des versions plus anciennes de Bazzite — [En savoir "
 "plus](%s)"
 
+#: main.go:58
+msgid "The motd has been disabled."
+msgstr "Le motd a été désactivé."
+
+#: main.go:40
+msgid "The motd has been enabled."
+msgstr "Le motd a été activé."
+
+#: main.go:50
+msgid "The motd is already disabled."
+msgstr "Le motd est déjà désactivé."
+
+#: main.go:43
+msgid "The motd is already enabled."
+msgstr "Le motd est déjà activé."
+
 #: getTips.go:28
 msgid "The wallpapers are made by **Chandeleer** — [Support their work](%s)"
 msgstr ""
 "Les fonds d'écran sont réalisés par **Chandeleer** — [Soutenir leur travail]"
 "(%s)"
 
-#: main.go:54
+#: main.go:108
 msgid "Toggle this banner on/off"
 msgstr "Active/désactive ce panneau"
 
-#: main.go:26
+#: main.go:80
 msgid "Unknown system"
 msgstr "Système inconnu"
 
@@ -580,15 +608,15 @@ msgstr ""
 "antérieure de votre système en cas de soucis — Pour plus de détails, [lisez "
 "la documentation](%s)"
 
-#: main.go:56
+#: main.go:110
 msgid "View system information"
 msgstr "Affiche les informations système"
 
-#: main.go:75
+#: main.go:129
 msgid "Website"
 msgstr "Site Web"
 
-#: main.go:22
+#: main.go:76
 msgid "Welcome to %s"
 msgstr "Bienvenue sur %s"
 
