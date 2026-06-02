@@ -8,7 +8,7 @@ if [ -z "$1" ]; then
     exit 1
 fi
 
-if [ -d "locales/$1" ]; then
+if [ -f "locales/$1/LC_MESSAGES/default.po" ]; then
     echo "Language $1 already exists. Updating..."
     ~/go/bin/xgotext -in . -out locales/temp || (echo "You don't have \`xgotext\` installed :(" && rm -rf locales/temp && exit 1)
     msgmerge --update locales/$1/LC_MESSAGES/default.po locales/temp/default.pot || (echo "You don't have \`gettext\` installed :(" && rm -rf locales/temp && exit 1)
