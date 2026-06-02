@@ -87,6 +87,15 @@ LANGUAGE=fr ./umotd
 LANGUAGE=fr go run .
 ```
 
+## Arguments
+
+Umotd supports the following arguments:
+
+- `toggle`: toggles the MOTD on or off for the current user
+- `enable`: always enables the MOTD for the current user
+- `disable`: always disables the MOTD for the current user
+- `version`, `--version`, `-v`: displays the version of Umotd you're currently using
+
 ## How to configure Umotd
 
 Umotd has a default built-in look, but it's actually made to be highly customizable.
