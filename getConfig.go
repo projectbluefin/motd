@@ -32,7 +32,7 @@ func defaultConfig() Config {
 		Commands: []Command{
 			{Cmd: "ujust --choose", Desc: "cmd_list"},
 			{Cmd: "ujust toggle-user-motd", Desc: "motd_toggle"},
-			{Cmd: "fastfetch", Desc: "fastfetch"},
+			{Cmd: "fastfetch", Desc: "sys_info"},
 			{Cmd: "brew help", Desc: "cli_pkg"},
 		},
 		Links: []Link{
