@@ -99,7 +99,7 @@ Any other option not listed won't be translated.
 
 Here's a breakdown of the config file options - there's also the example folder if you want to see concrete use cases.
 
-#### "Commands"
+#### Commands
 
 This option allows you to define a list of commands to display in the MOTD.
 
