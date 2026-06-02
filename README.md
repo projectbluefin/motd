@@ -21,11 +21,9 @@ Here are features that are planned for the future:
 
 ### Install it with Homebrew
 
-> WIP
-
-### Install it from Github
-
-> WIP
+```
+brew install themimolet/tap/umotd
+```
 
 ### Compile from source
 
