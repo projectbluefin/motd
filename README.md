@@ -10,7 +10,6 @@
 
 Here are features that are planned for the future:
 
-- Args to enable / disable the MOTD itself
 - Auto-detect or config option to prevent broken symbols
 - Shows a warning if the installed system image is over a certain amount of time (e.g. one month - configurable)
 - Shows a warning if the installed system image is unverified (could be disabled via configuration)

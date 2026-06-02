@@ -13,6 +13,39 @@ type ImageInfo struct {
 	ImageTag string `json:"image-tag"`
 }
 
+func getDesktop() string {
+	desktop := os.Getenv("XDG_CURRENT_DESKTOP")
+	if desktop == "" {
+		return "Unknown desktop"
+	}
+	return desktop
+}
+
+func getDisabledFile() string {
+	return os.ExpandEnv("$HOME/.config/umotd/disabled")
+}
+
+func getGreenbootInfo() string {
+	cmd_grep := exec.Command("grep", "-q", "status is GREEN", "/etc/motd.d/boot-status")
+	err := cmd_grep.Run()
+	if err != nil {
+		return ""
+	}
+	re := regexp.MustCompile(`status is GREEN`)
+
+	isGreen := re.FindString("status is GREEN")
+	if isGreen != "" {
+		return "healthy"
+	} else {
+		cmd := exec.Command("cat", "/etc/motd.d/boot-status")
+		output, err := cmd.Output()
+		if err != nil {
+			return ""
+		}
+		return "`" + string(output) + "`"
+	}
+}
+
 func getImageInfo(infoFile string) ImageInfo {
 	if infoFile == "" {
 		infoFile = "/usr/share/ublue-os/image-info.json"
@@ -46,25 +79,10 @@ func getOSName() string {
 	return "Your System"
 }
 
-func getGreenbootInfo() string {
-	cmd_grep := exec.Command("grep", "-q", "status is GREEN", "/etc/motd.d/boot-status")
-	err := cmd_grep.Run()
-	if err != nil {
-		return ""
-	}
-	re := regexp.MustCompile(`status is GREEN`)
-
-	isGreen := re.FindString("status is GREEN")
-	if isGreen != "" {
-		return "healthy"
-	} else {
-		cmd := exec.Command("cat", "/etc/motd.d/boot-status")
-		output, err := cmd.Output()
-		if err != nil {
-			return ""
-		}
-		return "`" + string(output) + "`"
-	}
+// hasNerdFontSymbols checks if the Nerd Fonts symbols are available to prevent broken symbols in the MOTD - WIP
+func hasNerdFontSymbols() bool {
+	_, err := os.Stat("/usr/share/fonts/nerd-fonts/NerdFontsSymbolsOnly/")
+	return err == nil
 }
 
 func isBootcSystem() bool {
@@ -72,16 +90,7 @@ func isBootcSystem() bool {
 	return err == nil
 }
 
-func getDesktop() string {
-	desktop := os.Getenv("XDG_CURRENT_DESKTOP")
-	if desktop == "" {
-		return "Unknown desktop"
-	}
-	return desktop
-}
-
-// hasNerdFontSymbols checks if the Nerd Fonts symbols are available to prevent broken symbols in the MOTD - WIP
-func hasNerdFontSymbols() bool {
-	_, err := os.Stat("/usr/share/fonts/nerd-fonts/NerdFontsSymbolsOnly/")
+func isDisabled() bool {
+	_, err := os.Stat(getDisabledFile())
 	return err == nil
 }

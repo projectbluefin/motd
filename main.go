@@ -2,11 +2,14 @@ package main
 
 import (
 	"fmt"
+	"os"
 	"strings"
 
 	"charm.land/glamour/v2"
 	"github.com/leonelquinteros/gotext"
 )
+
+const VERSION = "0.2"
 
 func main() {
 
@@ -14,6 +17,57 @@ func main() {
 	locale := detectLocale(localesFS)
 	l := gotext.NewLocaleFSWithPath(locale, localesFS, "locales")
 	l.AddDomain("default")
+
+	isDisabled := isDisabled()
+
+	// Handles command line arguments
+	if len(os.Args) > 1 {
+		switch os.Args[1] {
+
+		// Prints the version
+		case "--version", "-v", "version":
+			fmt.Println(VERSION)
+			return
+
+		// Enables the motd
+		case "enable":
+			if isDisabled {
+				err := os.Remove(getDisabledFile())
+				if err != nil {
+					fmt.Println(l.Get("Failed to enable the motd."))
+					return
+				}
+				fmt.Println(l.Get("The motd has been enabled."))
+				return
+			} else {
+				fmt.Println(l.Get("The motd is already enabled."))
+				return
+			}
+
+		// Disables the motd
+		case "disable":
+			if isDisabled {
+				fmt.Println(l.Get("The motd is already disabled."))
+				return
+			} else {
+				_, err := os.Create(getDisabledFile())
+				if err != nil {
+					fmt.Println(l.Get("Failed to disable the motd."))
+					return
+				}
+				fmt.Println(l.Get("The motd has been disabled."))
+				return
+			}
+		default:
+			fmt.Println(l.Get("Invalid command"))
+			return
+		}
+	}
+
+	// Exits if the motd is disabled
+	if isDisabled {
+		os.Exit(0)
+	}
 
 	// Loads the configuration from the system's config file
 	cfg := getConfig()
