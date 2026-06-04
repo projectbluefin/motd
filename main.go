@@ -9,7 +9,7 @@ import (
 	"github.com/leonelquinteros/gotext"
 )
 
-const VERSION = "0.2"
+const VERSION = "0.2.1"
 
 func main() {
 
@@ -74,16 +74,16 @@ func main() {
 	// Gets the image info and OS name
 	in := "# " + cfg.Prefix + l.Get("Welcome to %s", getOSName()) + cfg.Suffix + "\n"
 	if imageInfo := getImageInfo(cfg.InfoFile); imageInfo.ImageRef != "" || imageInfo.ImageTag != "" {
-		in += " 󱋩 `" + imageInfo.ImageRef + ":" + imageInfo.ImageTag + "` \n"
+		in += " " + getSymbol("oci") + " `" + imageInfo.ImageRef + ":" + imageInfo.ImageTag + "` \n"
 	} else if isBootcSystem() {
-		in += " 󱋩 `" + l.Get("Unknown system") + "` \n"
+		in += " " + getSymbol("oci") + " `" + l.Get("Unknown system") + "` \n"
 	}
 
 	// Gets the Greenboot status
 	if greenboot := getGreenbootInfo(); greenboot != "" {
-		in += "\n 󰟀  " + l.Get("Boot Status") + ":"
+		in += "\n " + getSymbol("boot") + " " + l.Get("Boot Status") + ":"
 		if greenboot == "healthy" {
-			in += "`" + l.Get("Healthy") + " 󰄳`"
+			in += "`" + l.Get("Healthy") + " " + getSymbol("healthy") + "`"
 		} else {
 			in += "`" + greenboot + "`"
 		}
@@ -92,7 +92,7 @@ func main() {
 
 	// Command list
 	if len(cfg.Commands) > 0 {
-		in += " |  " + l.Get("Command") + " | " + l.Get("Description") + " | \n"
+		in += " | " + getSymbol("command_palette") + " " + l.Get("Command") + " | " + l.Get("Description") + " | \n"
 		in += "| ------------ | ----------- |\n"
 		var cmdSb strings.Builder
 		for _, cmd := range cfg.Commands {
@@ -125,25 +125,27 @@ func main() {
 		for _, link := range cfg.Links {
 			switch link.Name {
 			case "website":
-				link.Name = "󰌹 [" + l.Get("Website") + "]"
+				link.Name = getSymbol("website") + " [" + l.Get("Website") + "]"
 			case "issues":
-				link.Name = "󰊤 [" + l.Get("Report an issue") + "]"
+				link.Name = getSymbol("issues") + " [" + l.Get("Report an issue") + "]"
 			case "docs":
-				link.Name = "󰈙 [" + l.Get("Documentation") + "]"
+				link.Name = getSymbol("docs") + " [" + l.Get("Documentation") + "]"
 			case "discuss":
-				link.Name = "󰊌 [" + l.Get("Discuss") + "]"
+				link.Name = getSymbol("discuss") + " [" + l.Get("Discuss") + "]"
 			case "discord":
-				link.Name = "󰙯 [" + l.Get("Discord") + "]"
+				link.Name = getSymbol("discord") + " [" + l.Get("Discord") + "]"
 			case "matrix":
-				link.Name = "󰊌 [" + l.Get("Matrix") + "]"
+				link.Name = getSymbol("matrix") + " [" + l.Get("Matrix") + "]"
 			case "bluesky":
-				link.Name = " [" + l.Get("Bluesky") + "]"
+				link.Name = getSymbol("bluesky") + " [" + l.Get("Bluesky") + "]"
 			case "mastodon":
-				link.Name = "󰫑 [" + l.Get("Mastodon") + "]"
+				link.Name = getSymbol("mastodon") + " [" + l.Get("Mastodon") + "]"
 			case "donate":
-				link.Name = "󱢏 [" + l.Get("Donate") + "]"
+				link.Name = getSymbol("donate") + " [" + l.Get("Donate") + "]"
+			case "link":
+				link.Name = getSymbol("link") + " [" + link.Name + "]"
 			default:
-				link.Name = "󰌹 [" + link.Name + "]"
+				link.Name = getSymbol("link") + " [" + link.Name + "]"
 			}
 			fmt.Fprintf(&linkSb, " - %s(%s)\n", link.Name, link.URL)
 		}

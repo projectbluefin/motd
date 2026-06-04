@@ -33,12 +33,12 @@ func queryTerminalBackground() string {
 	response := string(buf[:n])
 
 	// parse rgb:RRRR/GGGG/BBBB
-	idx := strings.Index(response, "rgb:")
-	if idx == -1 {
+	_, after, ok := strings.Cut(response, "rgb:")
+	if !ok {
 		return "dark"
 	}
 
-	parts := strings.Split(response[idx+4:], "/")
+	parts := strings.Split(after, "/")
 	if len(parts) < 3 {
 		return "dark"
 	}

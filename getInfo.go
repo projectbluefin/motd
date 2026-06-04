@@ -79,12 +79,6 @@ func getOSName() string {
 	return "Your System"
 }
 
-// hasNerdFontSymbols checks if the Nerd Fonts symbols are available to prevent broken symbols in the MOTD - WIP
-func hasNerdFontSymbols() bool {
-	_, err := os.Stat("/usr/share/fonts/nerd-fonts/NerdFontsSymbolsOnly/")
-	return err == nil
-}
-
 func isBootcSystem() bool {
 	_, err := os.Stat("/run/ostree-booted")
 	return err == nil

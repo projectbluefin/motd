@@ -9,9 +9,14 @@ import (
 
 const defaultMargin uint = 2
 
-func stringPtr(s string) *string { return &s }
-func boolPtr(b bool) *bool       { return &b }
-func uintPtr(u uint) *uint       { return &u }
+//go:fix inline
+func stringPtr(s string) *string { return new(s) }
+
+//go:fix inline
+func boolPtr(b bool) *bool { return new(b) }
+
+//go:fix inline
+func uintPtr(u uint) *uint { return new(u) }
 
 // The colors are ANSI color codes (ANSI 256 - https://en.wikipedia.org/wiki/ANSI_escape_code#Colors)
 
@@ -48,18 +53,18 @@ func getAccentStyle() ansi.StyleConfig {
 
 	return ansi.StyleConfig{
 		Document: ansi.StyleBlock{
-			StylePrimitive: ansi.StylePrimitive{
-				BlockPrefix: "\n",
-				BlockSuffix: "\n",
-			},
-			Margin: uintPtr(defaultMargin),
+			// StylePrimitive: ansi.StylePrimitive{
+			// 	BlockPrefix: "\n",
+			// 	BlockSuffix: "\n",
+			// },
+			Margin: new(defaultMargin),
 		},
 		BlockQuote: ansi.StyleBlock{
 			StylePrimitive: ansi.StylePrimitive{
-				Italic: boolPtr(true),
+				Italic: new(true),
 			},
-			Indent:      uintPtr(1),
-			IndentToken: stringPtr("│ "),
+			Indent:      new(uint(1)),
+			IndentToken: new("│ "),
 		},
 		List: ansi.StyleList{
 			LevelIndent: defaultMargin,
@@ -67,8 +72,8 @@ func getAccentStyle() ansi.StyleConfig {
 		Heading: ansi.StyleBlock{
 			StylePrimitive: ansi.StylePrimitive{
 				BlockSuffix: "\n",
-				Color:       stringPtr(accent),
-				Bold:        boolPtr(true),
+				Color:       new(accent),
+				Bold:        new(true),
 			},
 		},
 		H1: ansi.StyleBlock{
@@ -92,17 +97,17 @@ func getAccentStyle() ansi.StyleConfig {
 		H6: ansi.StyleBlock{
 			StylePrimitive: ansi.StylePrimitive{
 				Prefix: "┊ ",
-				Bold:   boolPtr(false),
+				Bold:   new(false),
 			},
 		},
-		Strikethrough: ansi.StylePrimitive{CrossedOut: boolPtr(true)},
-		Emph:          ansi.StylePrimitive{Italic: boolPtr(true)},
+		Strikethrough: ansi.StylePrimitive{CrossedOut: new(true)},
+		Emph:          ansi.StylePrimitive{Italic: new(true)},
 		Strong: ansi.StylePrimitive{
-			Color: stringPtr(accent),
-			Bold:  boolPtr(true),
+			Color: new(accent),
+			Bold:  new(true),
 		},
 		HorizontalRule: ansi.StylePrimitive{
-			Color:  stringPtr(accent),
+			Color:  new(accent),
 			Format: "\n──────\n",
 		},
 		Item: ansi.StylePrimitive{
@@ -116,11 +121,11 @@ func getAccentStyle() ansi.StyleConfig {
 			Unticked: "[ ] ",
 		},
 		Link: ansi.StylePrimitive{
-			Color:     stringPtr(link),
-			Underline: boolPtr(true),
+			Color:     new(link),
+			Underline: new(true),
 		},
-		LinkText: ansi.StylePrimitive{Bold: boolPtr(true)},
-		Image:    ansi.StylePrimitive{Underline: boolPtr(true)},
+		LinkText: ansi.StylePrimitive{Bold: new(true)},
+		Image:    ansi.StylePrimitive{Underline: new(true)},
 		ImageText: ansi.StylePrimitive{
 			Format: "Image: {{.text}}",
 		},
@@ -128,8 +133,8 @@ func getAccentStyle() ansi.StyleConfig {
 			StylePrimitive: ansi.StylePrimitive{
 				Prefix: " ",
 				Suffix: " ",
-				Color:  stringPtr(accent),
-				Bold:   boolPtr(true),
+				Color:  new(accent),
+				Bold:   new(true),
 			},
 		},
 		CodeBlock:             ansi.StyleCodeBlock{},
