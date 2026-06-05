@@ -1,4 +1,4 @@
-package main
+package internal
 
 import (
 	"os/exec"
@@ -44,7 +44,7 @@ func getNerdFontSymbols() bool {
 
 var hasNerdFontSymbols bool = getNerdFontSymbols()
 
-func getSymbol(symbolName string) string {
+func GetSymbol(symbolName string) string {
 	if hasNerdFontSymbols {
 		if symbol, ok := nerdFontSymbols[symbolName]; ok {
 			return symbol

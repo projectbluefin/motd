@@ -1,9 +1,12 @@
 package main
 
 import (
+	"embed"
 	"fmt"
 	"os"
 	"strings"
+
+	"umotd/internal"
 
 	"charm.land/glamour/v2"
 	"github.com/leonelquinteros/gotext"
@@ -11,14 +14,17 @@ import (
 
 const VERSION = "0.2.1"
 
+//go:embed all:locales
+var localesFS embed.FS
+
 func main() {
 
 	// Loads the locale based on the system's locale
-	locale := detectLocale(localesFS)
+	locale := internal.DetectLocale(localesFS)
 	l := gotext.NewLocaleFSWithPath(locale, localesFS, "locales")
 	l.AddDomain("default")
 
-	isDisabled := isDisabled()
+	isDisabled := internal.IsDisabled()
 
 	// Handles command line arguments
 	if len(os.Args) > 1 {
@@ -69,21 +75,21 @@ func main() {
 	}
 
 	// Loads the configuration from the system's config file
-	cfg := getConfig()
+	cfg := internal.GetConfig()
 
 	// Gets the image info and OS name
-	in := "# " + cfg.Prefix + l.Get("Welcome to %s", getOSName()) + cfg.Suffix + "\n"
-	if imageInfo := getImageInfo(cfg.InfoFile); imageInfo.ImageRef != "" || imageInfo.ImageTag != "" {
-		in += " " + getSymbol("oci") + " `" + imageInfo.ImageRef + ":" + imageInfo.ImageTag + "` \n"
-	} else if isBootcSystem() {
-		in += " " + getSymbol("oci") + " `" + l.Get("Unknown system") + "` \n"
+	in := "# " + cfg.Prefix + l.Get("Welcome to %s", internal.GetOSName()) + cfg.Suffix + "\n"
+	if imageInfo := internal.GetImageInfo(cfg.InfoFile); imageInfo.ImageRef != "" || imageInfo.ImageTag != "" {
+		in += " " + internal.GetSymbol("oci") + " `" + imageInfo.ImageRef + ":" + imageInfo.ImageTag + "` \n"
+	} else if internal.IsBootcSystem() {
+		in += " " + internal.GetSymbol("oci") + " `" + l.Get("Unknown system") + "` \n"
 	}
 
 	// Gets the Greenboot status
-	if greenboot := getGreenbootInfo(); greenboot != "" {
-		in += "\n " + getSymbol("boot") + " " + l.Get("Boot Status") + ":"
+	if greenboot := internal.GetGreenbootInfo(); greenboot != "" {
+		in += "\n " + internal.GetSymbol("boot") + " " + l.Get("Boot Status") + ":"
 		if greenboot == "healthy" {
-			in += "`" + l.Get("Healthy") + " " + getSymbol("healthy") + "`"
+			in += "`" + l.Get("Healthy") + " " + internal.GetSymbol("healthy") + "`"
 		} else {
 			in += "`" + greenboot + "`"
 		}
@@ -92,7 +98,7 @@ func main() {
 
 	// Command list
 	if len(cfg.Commands) > 0 {
-		in += " | " + getSymbol("command_palette") + " " + l.Get("Command") + " | " + l.Get("Description") + " | \n"
+		in += " | " + internal.GetSymbol("command_palette") + " " + l.Get("Command") + " | " + l.Get("Description") + " | \n"
 		in += "| ------------ | ----------- |\n"
 		var cmdSb strings.Builder
 		for _, cmd := range cfg.Commands {
@@ -117,7 +123,7 @@ func main() {
 	}
 
 	// Gets a random tip
-	in += getRandomTip(l, cfg.Tips, cfg.TipsPresets...) + "\n\n"
+	in += internal.GetRandomTip(l, cfg.Tips, cfg.TipsPresets...) + "\n\n"
 
 	// Gets the links
 	if len(cfg.Links) > 0 {
@@ -125,27 +131,27 @@ func main() {
 		for _, link := range cfg.Links {
 			switch link.Name {
 			case "website":
-				link.Name = getSymbol("website") + " [" + l.Get("Website") + "]"
+				link.Name = internal.GetSymbol("website") + " [" + l.Get("Website") + "]"
 			case "issues":
-				link.Name = getSymbol("issues") + " [" + l.Get("Report an issue") + "]"
+				link.Name = internal.GetSymbol("issues") + " [" + l.Get("Report an issue") + "]"
 			case "docs":
-				link.Name = getSymbol("docs") + " [" + l.Get("Documentation") + "]"
+				link.Name = internal.GetSymbol("docs") + " [" + l.Get("Documentation") + "]"
 			case "discuss":
-				link.Name = getSymbol("discuss") + " [" + l.Get("Discuss") + "]"
+				link.Name = internal.GetSymbol("discuss") + " [" + l.Get("Discuss") + "]"
 			case "discord":
-				link.Name = getSymbol("discord") + " [" + l.Get("Discord") + "]"
+				link.Name = internal.GetSymbol("discord") + " [" + l.Get("Discord") + "]"
 			case "matrix":
-				link.Name = getSymbol("matrix") + " [" + l.Get("Matrix") + "]"
+				link.Name = internal.GetSymbol("matrix") + " [" + l.Get("Matrix") + "]"
 			case "bluesky":
-				link.Name = getSymbol("bluesky") + " [" + l.Get("Bluesky") + "]"
+				link.Name = internal.GetSymbol("bluesky") + " [" + l.Get("Bluesky") + "]"
 			case "mastodon":
-				link.Name = getSymbol("mastodon") + " [" + l.Get("Mastodon") + "]"
+				link.Name = internal.GetSymbol("mastodon") + " [" + l.Get("Mastodon") + "]"
 			case "donate":
-				link.Name = getSymbol("donate") + " [" + l.Get("Donate") + "]"
+				link.Name = internal.GetSymbol("donate") + " [" + l.Get("Donate") + "]"
 			case "link":
-				link.Name = getSymbol("link") + " [" + link.Name + "]"
+				link.Name = internal.GetSymbol("link") + " [" + link.Name + "]"
 			default:
-				link.Name = getSymbol("link") + " [" + link.Name + "]"
+				link.Name = internal.GetSymbol("link") + " [" + link.Name + "]"
 			}
 			fmt.Fprintf(&linkSb, " - %s(%s)\n", link.Name, link.URL)
 		}
@@ -155,10 +161,10 @@ func main() {
 
 	var out string
 
-	colorScheme := detectTheme()
-	if cfg.UseAccentColor && getDesktop() == "GNOME" {
+	colorScheme := internal.DetectTheme()
+	if cfg.UseAccentColor && internal.GetDesktop() == "GNOME" {
 		r, _ := glamour.NewTermRenderer(
-			glamour.WithStyles(getAccentStyle()),
+			glamour.WithStyles(internal.GetAccentStyle()),
 		)
 		out, _ = r.Render(in)
 	} else {
@@ -170,7 +176,7 @@ func main() {
 }
 
 func enableMotd(l *gotext.Locale) {
-	err := os.Remove(getDisabledFile())
+	err := os.Remove(internal.GetDisabledFile())
 	if err != nil {
 		fmt.Println(l.Get("Failed to enable the motd."))
 		return
@@ -179,7 +185,7 @@ func enableMotd(l *gotext.Locale) {
 }
 
 func disableMotd(l *gotext.Locale) {
-	_, err := os.Create(getDisabledFile())
+	_, err := os.Create(internal.GetDisabledFile())
 	if err != nil {
 		fmt.Println(l.Get("Failed to disable the motd."))
 		return

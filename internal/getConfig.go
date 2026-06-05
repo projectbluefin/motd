@@ -1,4 +1,4 @@
-package main
+package internal
 
 import (
 	"encoding/json"
@@ -58,7 +58,7 @@ func writeDefaultConfig(path string) error {
 	return os.WriteFile(path, data, 0644)
 }
 
-func getConfig(filepaths ...string) Config {
+func GetConfig(filepaths ...string) Config {
 	cfg := Config{}
 
 	if len(filepaths) == 0 {

@@ -1,4 +1,4 @@
-package main
+package internal
 
 import (
 	"encoding/json"
@@ -13,7 +13,7 @@ type ImageInfo struct {
 	ImageTag string `json:"image-tag"`
 }
 
-func getDesktop() string {
+func GetDesktop() string {
 	desktop := os.Getenv("XDG_CURRENT_DESKTOP")
 	if desktop == "" {
 		return "Unknown desktop"
@@ -21,11 +21,11 @@ func getDesktop() string {
 	return desktop
 }
 
-func getDisabledFile() string {
+func GetDisabledFile() string {
 	return os.ExpandEnv("$HOME/.config/umotd/disabled")
 }
 
-func getGreenbootInfo() string {
+func GetGreenbootInfo() string {
 	cmd_grep := exec.Command("grep", "-q", "status is GREEN", "/etc/motd.d/boot-status")
 	err := cmd_grep.Run()
 	if err != nil {
@@ -46,7 +46,7 @@ func getGreenbootInfo() string {
 	}
 }
 
-func getImageInfo(infoFile string) ImageInfo {
+func GetImageInfo(infoFile string) ImageInfo {
 	if infoFile == "" {
 		infoFile = "/usr/share/ublue-os/image-info.json"
 	}
@@ -65,7 +65,7 @@ func getImageInfo(infoFile string) ImageInfo {
 	return info
 }
 
-func getOSName() string {
+func GetOSName() string {
 	// Gets the OS name from /etc/os-release
 	data, err := os.ReadFile("/etc/os-release")
 	if err != nil {
@@ -79,12 +79,12 @@ func getOSName() string {
 	return "Your System"
 }
 
-func isBootcSystem() bool {
+func IsBootcSystem() bool {
 	_, err := os.Stat("/run/ostree-booted")
 	return err == nil
 }
 
-func isDisabled() bool {
-	_, err := os.Stat(getDisabledFile())
+func IsDisabled() bool {
+	_, err := os.Stat(GetDisabledFile())
 	return err == nil
 }

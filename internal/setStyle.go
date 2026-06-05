@@ -1,4 +1,4 @@
-package main
+package internal
 
 import (
 	"os/exec"
@@ -46,7 +46,7 @@ func getColorTheme() map[string]string {
 	return defaultColorTheme
 }
 
-func getAccentStyle() ansi.StyleConfig {
+func GetAccentStyle() ansi.StyleConfig {
 	theme := getColorTheme()
 	accent := theme["accent"]
 	link := theme["link"]

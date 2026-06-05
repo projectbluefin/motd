@@ -1,4 +1,4 @@
-package main
+package internal
 
 import (
 	"fmt"
@@ -55,7 +55,7 @@ func queryTerminalBackground() string {
 	return "light"
 }
 
-func detectTheme() string {
+func DetectTheme() string {
 
 	if s := os.Getenv("GLAMOUR_STYLE"); s == "light" || s == "dark" {
 		return s

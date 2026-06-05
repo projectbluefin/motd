@@ -1,4 +1,4 @@
-package main
+package internal
 
 import (
 	"embed"
@@ -8,11 +8,8 @@ import (
 	"golang.org/x/text/language"
 )
 
-//go:embed all:locales
-var localesFS embed.FS
-
 // Language detection
-func detectLocale(localesFS embed.FS) string {
+func DetectLocale(localesFS embed.FS) string {
 	langDir, _ := localesFS.ReadDir("locales")
 
 	tags := []language.Tag{language.English}
