@@ -63,6 +63,9 @@ func main() {
 				disableMotd(l)
 				return
 			}
+		case "config-path":
+			fmt.Println(internal.GetConfigPath())
+			return
 		default:
 			fmt.Println(l.Get("Invalid command"))
 			return

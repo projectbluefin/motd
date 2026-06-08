@@ -2,6 +2,7 @@ package internal
 
 import (
 	"encoding/json"
+	"fmt"
 	"os"
 	"path/filepath"
 )
@@ -27,7 +28,7 @@ type Link struct {
 	URL  string `json:"url"`
 }
 
-// sensible defaults
+// defaultConfig returns a sensible default config
 func defaultConfig() Config {
 	return Config{
 		Commands: []Command{
@@ -47,7 +48,7 @@ func defaultConfig() Config {
 	}
 }
 
-func writeDefaultConfig(path string) error {
+func WriteDefaultConfig(path string) error {
 	if err := os.MkdirAll(filepath.Dir(path), 0755); err != nil {
 		return err
 	}
@@ -58,26 +59,62 @@ func writeDefaultConfig(path string) error {
 	return os.WriteFile(path, data, 0644)
 }
 
-func GetConfig(filepaths ...string) Config {
+// isConfigOkay checks if the config file at the given path is valid
+func isConfigOkay(path string) bool {
+
+	var noError bool = true
+
+	_, err := os.Stat(path)
+	if err != nil {
+		noError = false
+	}
+
+	data, err := os.ReadFile(path)
+	if err != nil {
+		fmt.Printf("Failed to read config file: %s\n", err)
+		noError = false
+	}
+
+	var tempCfg Config
+	if err := json.Unmarshal(data, &tempCfg); err != nil {
+		fmt.Printf("Failed to unmarshal config file: %s\n", err)
+		noError = false
+	}
+
+	return noError
+}
+
+// GetConfigPath returns the path to a valid config file, returns "" if no valid config file is found
+func GetConfigPath() string {
+	filepath := []string{
+		os.ExpandEnv("$HOME/.config/umotd/config.json"),
+		"/etc/umotd/config.json",
+	}
+	for _, path := range filepath {
+		if isConfigOkay(path) {
+			return path
+		}
+	}
+	return ""
+}
+
+// GetConfig returns the config file at the given path, or a default config if no valid config file is found
+func GetConfig() Config {
 	cfg := Config{}
+	path := GetConfigPath()
 
-	if len(filepaths) == 0 {
-		filepaths = []string{
-			os.ExpandEnv("$HOME/.config/umotd/config.json"),
-			"/etc/umotd/config.json",
-		}
+	if path == "" {
+		return defaultConfig()
 	}
 
-	for _, path := range filepaths {
-		data, err := os.ReadFile(path)
-		if err != nil {
-			continue
-		}
-		if err := json.Unmarshal(data, &cfg); err != nil {
-			continue
-		}
-		return cfg
+	data, err := os.ReadFile(path)
+	if err != nil {
+		return defaultConfig()
 	}
 
-	return defaultConfig()
+	if err := json.Unmarshal(data, &cfg); err != nil {
+		return defaultConfig()
+	}
+
+	return cfg
 }
