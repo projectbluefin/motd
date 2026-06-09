@@ -1,4 +1,4 @@
-package internal
+package config
 
 import (
 	"encoding/json"
@@ -85,7 +85,7 @@ func isConfigOkay(path string) bool {
 }
 
 // GetConfigPath returns the path to a valid config file, returns "" if no valid config file is found
-func GetConfigPath() string {
+func GetPath() string {
 	filepath := []string{
 		os.ExpandEnv("$HOME/.config/umotd/config.json"),
 		"/etc/umotd/config.json",
@@ -101,7 +101,7 @@ func GetConfigPath() string {
 // GetConfig returns the config file at the given path, or a default config if no valid config file is found
 func GetConfig() Config {
 	cfg := Config{}
-	path := GetConfigPath()
+	path := GetPath()
 
 	if path == "" {
 		return defaultConfig()

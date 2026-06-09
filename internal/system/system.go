@@ -1,4 +1,4 @@
-package internal
+package system
 
 import (
 	"encoding/json"
@@ -19,10 +19,6 @@ func GetDesktop() string {
 		return "Unknown desktop"
 	}
 	return desktop
-}
-
-func GetDisabledFile() string {
-	return os.ExpandEnv("$HOME/.config/umotd/disabled")
 }
 
 func GetGreenbootInfo() string {
@@ -81,10 +77,5 @@ func GetOSName() string {
 
 func IsBootcSystem() bool {
 	_, err := os.Stat("/run/ostree-booted")
-	return err == nil
-}
-
-func IsDisabled() bool {
-	_, err := os.Stat(GetDisabledFile())
 	return err == nil
 }

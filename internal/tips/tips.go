@@ -1,8 +1,10 @@
-package internal
+package tips
 
 import (
 	"math/rand"
 	"slices"
+	"umotd/internal/symbols"
+	"umotd/internal/system"
 
 	"github.com/leonelquinteros/gotext"
 )
@@ -17,8 +19,8 @@ func GetRandomTip(l *gotext.Locale, customTips []string, preset ...string) strin
 
 	if slices.Contains(preset, "default") {
 		tips = append(tips, []string{
-			l.Get("The Linux penguin is named `Tux`! %s", GetSymbol("penguin")),
-			l.Get("Maybe **the real %s** was the friends we made along the way.", GetOSName()),
+			l.Get("The Linux penguin is named `Tux`! %s", symbols.GetSymbol("penguin")),
+			l.Get("Maybe **the real %s** was the friends we made along the way.", system.GetOSName()),
 			l.Get("**Your distro is valid!** It's your computer, choose what works best for you.👍"),
 		}...)
 	}
@@ -46,13 +48,13 @@ func GetRandomTip(l *gotext.Locale, customTips []string, preset ...string) strin
 		tips = append(tips, []string{
 			l.Get("Use `Ctrl + Alt + T` to quickly open a terminal."),
 			l.Get("**Did an update break something?** You can roll back with `bootc rollback`."),
-			l.Get("Use `brew search` and `brew install` to install packages. %s will take care of the updates automatically.", GetOSName()),
+			l.Get("Use `brew search` and `brew install` to install packages. %s will take care of the updates automatically.", system.GetOSName()),
 			l.Get("`ujust --choose` will show you each ujust shortcut and the script they're running."),
 			l.Get("`ujust changelogs` shows a summary of the package changes since the last update."),
 			l.Get("The **Bazaar** app store is made by **Kolunmi** — [Support their work](%s)", "https://ko-fi.com/kolunmi"),
 			l.Get("Switch shells safely: change your shell in Terminal settings instead of system-wide — [Read more](%s)", "https://tim.siosm.fr/blog/2023/12/22/dont-change-defaut-login-shell/"),
 			l.Get("Packages installed in Distrobox can be exported to appear like any other application — [View documentation](%s)", "https://distrobox.it/usage/distrobox-export/"),
-			l.Get("*%s isn't a distro*, this is a custom image built on %s Fedora Atomic Desktop technology — [View our mission](%s)", GetOSName(), GetSymbol("fedora"), "https://ublue.it/mission/"),
+			l.Get("*%s isn't a distro*, this is a custom image built on %s Fedora Atomic Desktop technology — [View our mission](%s)", system.GetOSName(), symbols.GetSymbol("fedora"), "https://ublue.it/mission/"),
 			l.Get("**Support indie game preservation and OSS developers!** — [Join Hit Save!'s Patreon](%s)", "https://patreon.com/hitsave"),
 			l.Get("**H.264 hardware acceleration works out of the box** — no tweaks necessary!"),
 			l.Get("**No Flatpak available?** Gear Lever is perfect for easy AppImage management — [Check it out](%s)", "appstream://it.mijorus.gearlever"),
@@ -75,9 +77,9 @@ func GetRandomTip(l *gotext.Locale, customTips []string, preset ...string) strin
 			l.Get("**Container development is OS-agnostic** — your devcontainers work on Linux, macOS, and Windows."),
 			l.Get("**Performance profiling is built-in** — try `sysprof`, `bpftrace`, or `perf` to dig into what your system is doing."),
 			l.Get("Prefer `docker compose` for multi-container setups where a single devcontainer isn't enough."),
-			l.Get("**%s is your gateway to Kubernetes** %s `kind create cluster` to [get started](%s)", GetOSName(), GetSymbol("kubernetes"), "https://kind.sigs.k8s.io/"),
-			l.Get("**%s is your gateway to Cloud Native** — find your flock at [landscape.cncf.io](%s)", GetOSName(), "https://l.cncf.io"),
-			l.Get("**%s separates the OS from your development environment** — take full advantage of the cloud-native workflow!", GetOSName()),
+			l.Get("**%s is your gateway to Kubernetes** %s `kind create cluster` to [get started](%s)", system.GetOSName(), symbols.GetSymbol("kubernetes"), "https://kind.sigs.k8s.io/"),
+			l.Get("**%s is your gateway to Cloud Native** — find your flock at [landscape.cncf.io](%s)", system.GetOSName(), "https://l.cncf.io"),
+			l.Get("**%s separates the OS from your development environment** — take full advantage of the cloud-native workflow!", system.GetOSName()),
 			l.Get("**Develop with devcontainers** — use `devcontainer.json` files in your projects for isolated, reproducible environments! [Get started here](%s)", "https://code.visualstudio.com/docs/devcontainers/tutorial"),
 		}...)
 	}
@@ -114,12 +116,12 @@ func GetRandomTip(l *gotext.Locale, customTips []string, preset ...string) strin
 	if slices.Contains(preset, "bazzite") && slices.Contains(preset, "deck") {
 		tips = append(tips, []string{
 			l.Get("**Want to install Decky Loader?** There's a `ujust` command for that! `ujust setup-decky install`"),
-			l.Get("%s The Steam game mode updater also updates Bazzite, Flatpak apps, and Distrobox containers. The changelog shown is from the Steam client.", GetSymbol("steam")),
-			l.Get("**Install a game with Lutris?** Right-click on it and `Create steam shortcut` to easily play it in %s Steam game mode.", GetSymbol("steam")),
+			l.Get("%s The Steam game mode updater also updates Bazzite, Flatpak apps, and Distrobox containers. The changelog shown is from the Steam client.", symbols.GetSymbol("steam")),
+			l.Get("**Install a game with Lutris?** Right-click on it and `Create steam shortcut` to easily play it in %s Steam game mode.", symbols.GetSymbol("steam")),
 			l.Get("**Games missing icons?** The `SteamGridDB` plugin for Decky Loader makes it easy to add missing art — [More info](%s)", "https://github.com/SteamGridDB/decky-steamgriddb"),
-			l.Get("**Confused about what games are compatible with Linux?** The `ProtonDB Badges` plugin for Decky Loader adds community-powered game compatibility badges to your entire %s Steam Library — [More info](%s)", GetSymbol("steam"), "https://github.com/OMGDuke/protondb-decky"),
-			l.Get("**Looking for more security?** Tailscale and OpenVPN are built-in, and can be controlled from %s Steam game mode by the `Tailscale Control` and `TunnelDeck` Decky loader plugins.", GetSymbol("steam")),
-			l.Get("**Using a handheld that doesn't have enough buttons?** %s Steam game mode now supports touch gestures to slide out the menus, thanks to [ChimeraOS](%s)", GetSymbol("steam"), "https://chimeraos.org/"),
+			l.Get("**Confused about what games are compatible with Linux?** The `ProtonDB Badges` plugin for Decky Loader adds community-powered game compatibility badges to your entire %s Steam Library — [More info](%s)", symbols.GetSymbol("steam"), "https://github.com/OMGDuke/protondb-decky"),
+			l.Get("**Looking for more security?** Tailscale and OpenVPN are built-in, and can be controlled from %s Steam game mode by the `Tailscale Control` and `TunnelDeck` Decky loader plugins.", symbols.GetSymbol("steam")),
+			l.Get("**Using a handheld that doesn't have enough buttons?** %s Steam game mode now supports touch gestures to slide out the menus, thanks to [ChimeraOS](%s)", symbols.GetSymbol("steam"), "https://chimeraos.org/"),
 		}...)
 	}
 

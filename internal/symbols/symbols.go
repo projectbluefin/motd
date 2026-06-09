@@ -1,4 +1,4 @@
-package internal
+package symbols
 
 import (
 	"os/exec"
