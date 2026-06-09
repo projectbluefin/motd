@@ -6,7 +6,7 @@
 
 **Contributions are welcome!** If you want to contribute, you're welcome to submit a pull request or open an issue - it's very much appreciated ❤️
 
-[Advanced documentation](https://github.com/theMimolet/umotd/)
+[Access the documentation](https://github.com/theMimolet/umotd/tree/main/docs)
 
 ## Roadmap
 
